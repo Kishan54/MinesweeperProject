@@ -37,6 +37,14 @@ public class Backboard {
         this.backboard_difficulty = backboard_difficulty;
     }
 
+    public Plates[][] getPlates() {
+        return plates;
+    }
+
+    public void setPlates(Plates[][] plates) {
+        this.plates = plates;
+    }
+
 
 
 }
