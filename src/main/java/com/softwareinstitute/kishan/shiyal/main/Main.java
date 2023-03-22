@@ -1,7 +1,9 @@
 package com.softwareinstitute.kishan.shiyal.main;
 
 import com.softwareinstitute.kishan.shiyal.minesweeper.Backboard;
+import com.softwareinstitute.kishan.shiyal.minesweeper.Plate;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -13,10 +15,11 @@ public class Main {
 
         //create default board
         Backboard default_board = new Backboard();
+        ArrayList<Plate> plate_array = new ArrayList<Plate>();
 
         default_board.setBackboard_length(5);
         default_board.setBackboard_width(5);
-        default_board.create_board(default_board.getBackboard_length(), default_board.getBackboard_width());
+        plate_array = default_board.create_board(default_board.getBackboard_length(), default_board.getBackboard_width());
 
         do {
             System.out.println("\nPlease choose an option: " +
@@ -26,7 +29,7 @@ public class Main {
                     "\nChoose your option (1-3):");
             userInput = myObj.nextInt();
             if (userInput == 1){
-                display_backboard(default_board);
+                display_backboard(default_board, plate_array);
             } else if (userInput == 2) {
                 continue;
             } else if (userInput == 3) {
@@ -35,19 +38,23 @@ public class Main {
         } while (breakingLoop == false);
     }
 
-    public static void display_backboard (Backboard default_board){
+    public static void display_backboard (Backboard default_board, ArrayList<Plate> plate_array){
         System.out.println("All Animals: ");
-        if (default_board.getBackboard_length() >= 1) {
-            System.out.println("Has a length more than 0");
-            if (default_board.getBackboard_width() >= 1) {
-                System.out.println("Has a width more than 0");
-                for (int i = 0; i< default_board.getBackboard_length(); i++){
-                    for(int j = 0;j< default_board.getBackboard_width();j++){
-                        System.out.print("X");
-                    }
-                    System.out.println();
-                }
+        for (int i = 0; i< default_board.getBackboard_length(); i++){
+            for(int j = 0;j< default_board.getBackboard_width();j++){
+                System.out.print("X");
             }
+            System.out.println();
+        }
+        int y = 1;
+        for (Plate plate : plate_array) {
+            if (plate.getPosition_y() == y) {
+                System.out.print(plate.getPosition_x() + " " + plate.getPosition_y() + " - ");
+            } else {
+                y += 1;
+                System.out.print("\n" + plate.getPosition_x() + " " + plate.getPosition_y());
+            }
+
         }
     }
 }
