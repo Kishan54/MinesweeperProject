@@ -13,8 +13,10 @@ public class Main {
 
         //create default board
         Backboard default_board = new Backboard();
+
         default_board.setBackboard_length(5);
         default_board.setBackboard_width(5);
+        default_board.create_board(default_board.getBackboard_length(), default_board.getBackboard_width());
 
         do {
             System.out.println("\nPlease choose an option: " +
