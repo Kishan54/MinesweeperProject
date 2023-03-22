@@ -1,6 +1,7 @@
 package com.softwareinstitute.kishan.shiyal.main;
 
-import java.util.ArrayList;
+import com.softwareinstitute.kishan.shiyal.minesweeper.Backboard;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,9 @@ public class Main {
         System.out.println("Hello world!");
 
         //create default board
+        Backboard default_board = new Backboard();
+        default_board.setBackboard_length(5);
+        default_board.setBackboard_width(5);
 
         do {
             System.out.println("\nPlease choose an option: " +
@@ -20,24 +24,27 @@ public class Main {
                     "\nChoose your option (1-3):");
             userInput = myObj.nextInt();
             if (userInput == 1){
-                displayAnimals(animals);
+                display_backboard(default_board);
             } else if (userInput == 2) {
-                addAnimal(animals, myObj);
+                continue;
             } else if (userInput == 3) {
                 breakingLoop = true;
             }
         } while (breakingLoop == false);
     }
 
-    public static void displayAnimals (ArrayList<Animal> animals){
+    public static void display_backboard (Backboard default_board){
         System.out.println("All Animals: ");
-        if (animals.size() == 0) {
-            System.out.println("No Animals");
-        } else {
-            for (Animal animal : animals){
-                System.out.println("\nAnimal: " + animal.getClass().getSimpleName() +
-                        "\nName: " + animal.getName() +
-                        "\nAge: " + animal.getAge());
+        if (default_board.getBackboard_length() >= 1) {
+            System.out.println("Has a length more than 0");
+            if (default_board.getBackboard_width() >= 1) {
+                System.out.println("Has a width more than 0");
+                for (int i = 0; i< default_board.getBackboard_length(); i++){
+                    for(int j = 0;j< default_board.getBackboard_width();j++){
+                        System.out.print("X");
+                    }
+                    System.out.println();
+                }
             }
         }
     }
