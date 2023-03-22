@@ -18,26 +18,34 @@ public class Backboard {
     /////////////// Methods //////////////
 
     public ArrayList<Plate> create_board(int x, int y) {
-        ArrayList<Plate> plates = new ArrayList<Plate>();
+        ArrayList<Plate> plates = new ArrayList<>();
         for (int i = 1; i < x+1; i++){
             for (int j = 1; j < y+1; j++){
-                System.out.print("X");
                 Plate new_plate = new Plate();
                 new_plate.setPosition_x(j);
                 new_plate.setPosition_y(i);
                 new_plate.setTouched(false);
                 // 0 if blank, 9 if mine
                 double randomNumber = Math.random();
-                // mine should be 8% of the game
-                if (randomNumber <= 0.08) {
+                // mine should be 15% of the game
+                if (randomNumber <= 0.15) {
                     new_plate.setState(9);
                 } else {
                     new_plate.setState(0);
                 }
                 plates.add(new_plate);
             }
-            System.out.println();
         }
+
+//        int index;
+//        for (int i = 1; i < x+1; i++){
+//            for (int j = 1; j < y+1; j++){
+//                Plate current_plate = new Plate();
+//                index = (((i-1)*x)+j)-1;
+//                current_plate = plates.;
+//
+//            }
+//        }
         return plates;
     }
 

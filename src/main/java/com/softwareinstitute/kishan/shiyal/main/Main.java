@@ -15,11 +15,19 @@ public class Main {
 
         //create default board
         Backboard default_board = new Backboard();
-        ArrayList<Plate> plate_array = new ArrayList<Plate>();
 
-        default_board.setBackboard_length(5);
-        default_board.setBackboard_width(5);
-        plate_array = default_board.create_board(default_board.getBackboard_length(), default_board.getBackboard_width());
+        int inputLength;
+        int inputWidth;
+
+        System.out.println("Enter length: ");
+        inputLength = myObj.nextInt();
+        System.out.println("Enter width: ");
+        inputWidth = myObj.nextInt();
+
+        default_board.setBackboard_length(inputLength);
+        default_board.setBackboard_width(inputWidth);
+
+        ArrayList<Plate> plate_array = default_board.create_board(default_board.getBackboard_width(), default_board.getBackboard_length());
 
         do {
             System.out.println("\nPlease choose an option: " +
@@ -39,22 +47,22 @@ public class Main {
     }
 
     public static void display_backboard (Backboard default_board, ArrayList<Plate> plate_array){
-        System.out.println("All Animals: ");
-        for (int i = 0; i< default_board.getBackboard_length(); i++){
-            for(int j = 0;j< default_board.getBackboard_width();j++){
-                System.out.print("X");
-            }
-            System.out.println();
-        }
+        System.out.println("The Board: \n");
+
         int y = 1;
         for (Plate plate : plate_array) {
             if (plate.getPosition_y() == y) {
-                System.out.print(plate.getPosition_x() + " " + plate.getPosition_y() + " - ");
+                System.out.print("");
             } else {
                 y += 1;
-                System.out.print("\n" + plate.getPosition_x() + " " + plate.getPosition_y());
+                System.out.println("");
             }
 
+            if (plate.getState() == 0){
+                System.out.print("O");
+            } else if (plate.getState() == 9){
+                System.out.print("X");
+            }
         }
     }
 }
