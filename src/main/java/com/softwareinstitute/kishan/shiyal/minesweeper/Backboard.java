@@ -3,6 +3,8 @@ package com.softwareinstitute.kishan.shiyal.minesweeper;
 public class Backboard {
 
     /////////////// Attributes //////////////
+
+    private Plates[][] plates = new Plates[0][0];
     int backboard_length;
     int backboard_width;
     int backboard_difficulty;
