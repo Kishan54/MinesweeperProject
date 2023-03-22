@@ -28,6 +28,7 @@ public class Main {
         default_board.setBackboard_width(inputWidth);
 
         ArrayList<Plate> plate_array = default_board.create_board(default_board.getBackboard_width(), default_board.getBackboard_length());
+        //ArrayList<Plate> plate_array = default_board.check_board(plate_array);
 
         do {
             System.out.println("\nPlease choose an option: " +
